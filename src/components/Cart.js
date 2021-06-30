@@ -2,26 +2,53 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import CartItem from "./CartItem";
 import { ImSad } from "react-icons/im";
+import ConfirmationDialog from "./Modals/ConfirmationDialog";
+import { Scrollbars } from "react-custom-scrollbars-2";
+
+const renderThumb = ({ style, ...props }) => {
+  const thumbStyle = {
+    borderRadius: 6,
+    backgroundColor: "rgba(35, 49, 86, 0.8)",
+  };
+  return <div style={{ ...style, ...thumbStyle }} {...props} />;
+};
+
+const CustomScrollbars = (props) => (
+  <Scrollbars
+    renderThumbHorizontal={renderThumb}
+    renderThumbVertical={renderThumb}
+    {...props}
+  />
+);
 
 const Cart = (props) => {
   const { isCartOpen, setCartItems, cartItems, toggleCart } = props;
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   function calculateTotal() {
     let totalPrice = 0;
 
-    cartItems.forEach((i) => (totalPrice = totalPrice + i.price));
+    cartItems.forEach((i) => (totalPrice = totalPrice + i.price * i.qtd));
 
     return totalPrice;
   }
 
-  calculateTotal();
-
   function confirmOrder() {
-    alert("IR PARA CONFIRMAÇÃO DE COMPRA");
+    setIsModalOpen(true);
   }
 
   return (
     <Body display={isCartOpen}>
+      {isModalOpen ? (
+        <ConfirmationDialog
+          cartItems={cartItems}
+          setIsModalOpen={setIsModalOpen}
+          isModalOpen={isModalOpen}
+          calculateTotal={calculateTotal}
+        />
+      ) : (
+        ""
+      )}
       <div className="close-cart">
         <span>ÚLTIMOS ADICIONADOS</span>
         <span onClick={toggleCart} style={{ cursor: "pointer", color: "red" }}>
@@ -36,20 +63,28 @@ const Cart = (props) => {
         </EmptyWarning>
       ) : (
         <div className="itens-container">
-          {cartItems
-            .map((i) => {
-              return (
-                <CartItem
-                  image={i.image}
-                  name={i.name}
-                  price={i.price}
-                  qtd={i.qtd}
-                  cartItems={cartItems}
-                  setCartItems={setCartItems}
-                />
-              );
-            })
-            .reverse()}
+          <CustomScrollbars
+            autoHide
+            autoHideTimeout={500}
+            autoHideDuration={200}
+            autoHeight={true}
+            autoHeightMax={300}
+          >
+            {cartItems
+              .map((i) => {
+                return (
+                  <CartItem
+                    image={i.image}
+                    name={i.name}
+                    price={i.price}
+                    qtd={i.qtd}
+                    cartItems={cartItems}
+                    setCartItems={setCartItems}
+                  />
+                );
+              })
+              .reverse()}
+          </CustomScrollbars>
         </div>
       )}
 
@@ -82,7 +117,7 @@ const Body = styled.div`
   .itens-container {
     display: flex;
     flex-direction: column;
-    max-height: 360px;
+    height: 300px;
     width: 100%;
     overflow-y: hidden;
   }
@@ -100,6 +135,7 @@ const Body = styled.div`
   .btn-container {
     font-size: 16px;
     font-weight: 700;
+    margin-top: 12px;
   }
 
   button {
@@ -130,3 +166,4 @@ const EmptyWarning = styled.div`
   margin-bottom: 20px;
   line-height: 40px;
 `;
+
