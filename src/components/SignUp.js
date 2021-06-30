@@ -81,7 +81,7 @@ export default function SignUp(){
         
        axios.post("http://localhost:4000/sign-up",body)
        .then(()=>{
-            //history.push("/")
+            history.push("/")
        })
        .catch(()=>{
            alert('Houve um erro ao fazer o cadastro. Por favor tente novamente')

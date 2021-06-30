@@ -93,7 +93,7 @@ export default function SignIn(){
             // const userDataString = JSON.stringify(userData)
             // localStorage.setItem('info',userDataString)
         
-          //history.push("/home")
+          history.push("/home")
          // setLoading(false)
         })
         .catch((e)=>{
