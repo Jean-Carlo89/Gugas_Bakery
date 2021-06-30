@@ -1,51 +1,57 @@
-import { useEffect ,useState} from 'react'
-import styled, { ServerStyleSheet } from 'styled-components'
 import axios from 'axios'
-import {useHistory,link} from 'react-router-dom'
-import CartItem from './CartItem'
+import { useEffect, useState } from 'react'
+import {useParams} from 'react-router-dom'
+import styled from 'styled-components'
 
-
-export default function Home(){
-    const history = useHistory()
-    const [categories,setCategories] = useState([])
+export default function FoodOption(){
+    const {idCategory} = useParams()
+    console.log(idCategory)
+    const [categoryItens,setCategoryItens] = useState([])
+    //console.log(categoryId)
     useEffect(()=>{
-        axios.get('http://localhost:4000/categories')
+
+        axios.get(`http://localhost:4000/food/${idCategory}`)
         .then((response)=>{
-            console.log(response.data)
-            setCategories(response.data)
+            setCategoryItens(response.data)
         })
         .catch((err)=>{
             console.log(err)
         })
+
     },[])
     
     return(
         <Container>
-            <CategoriesList>
-               {
-                   categories.map((item)=>{
-                       return(
-                           
-                                <CategoryType key={item.id} background={item.image} onClick={()=>history.push(`/categoryItens/${item.id}`)}>
-                                    <h2>{item.category}</h2>
+
+             <CategoriesList>
+                {
+                    categoryItens.map((item)=>{
+                        return(
+                            <>
+                                <CategoryType key={item.id} background={item.image} >
+                                    <h2>{item.name}</h2>
+                                    <Price> R$ {((item.price)/100).toFixed(2)}</Price>
                                 </CategoryType>
-                            
-                       )
-                   })
-               }
+                               
+                            </>
+                        
+                        )
+                    })
+                }
 
             </CategoriesList>
-            
+                
+
         </Container>
     )
 }
 
 const Container = styled.div`
-    width: 100%;
-   // height: 100vh;
-   // background-color: red;
-   display: flex;
-   justify-content: center;
+width: 100%;
+ height: 100vh;
+//background-color: red;
+display: flex;
+justify-content: center;
 `
 
 const CategoriesList= styled.ul`
@@ -58,12 +64,13 @@ flex-wrap: wrap;
 `
 
 const CategoryType = styled.li`
-width: 200px;
-height: 200px;
+width: 300px;
+height: 300px;
 border: 1px solid blue;
 border-radius:50%;
 display: flex;
 justify-content: center;
+flex-direction: column;
 align-items: center;
 
 /* background:  url('https://docesonhosconfeitaria160534608.files.wordpress.com/2018/01/bolo-floresta-negra.jpg') ; */
@@ -90,6 +97,14 @@ position: relative;
         color: White;
         font-size: 25px;
         margin-top: 125px;
+        
         z-index:10
     }
+`
+
+const Price = styled.div`
+    color: white;
+    z-index:10;
+    margin-top: 15px;
+    font-size: 20px;
 `
