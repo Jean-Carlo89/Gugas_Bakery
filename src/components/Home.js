@@ -1,26 +1,37 @@
+import { useEffect ,useState} from 'react'
 import styled, { ServerStyleSheet } from 'styled-components'
+import axios from 'axios'
+import {useHistory} from 'react-router-dom'
+import CartItem from './CartItem'
+
+
 export default function Home(){
+    
+    const [categories,setCategories] = useState([])
+    useEffect(()=>{
+        axios.get('http://localhost:4000/categories')
+        .then((response)=>{
+            console.log(response.data)
+            setCategories(response.data)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    },[])
+    
     return(
         <Container>
             <CategoriesList>
-                <CategoryType background={'https://docesonhosconfeitaria160534608.files.wordpress.com/2018/01/bolo-floresta-negra.jpg'}>
+               {
+                   categories.map((item)=>{
+                       return(
+                            <CategoryType id={item.id} background={item.image}>
+                                <h2>{item.category}</h2>
+                            </CategoryType>
+                       )
+                   })
+               }
 
-                    <h2>Bolos</h2>
-                </CategoryType>
-                
-                <CategoryType background={'https://www.thinnaeventos.com.br/wp-content/uploads/elementor/thumbs/doces-salgados-festa-delivery-salvador-e1595801639779-ot2j5r9u0umy66nzifc23c2yul03cwhwxcxmm529ag.jpg'}>
-                <h2>Salgados</h2>
-                </CategoryType>
-
-                <CategoryType>
-
-                </CategoryType>
-
-                <CategoryType>
-
-                </CategoryType>
-
-               
             </CategoriesList>
             
         </Container>
@@ -29,7 +40,7 @@ export default function Home(){
 
 const Container = styled.div`
     width: 100%;
-    height: 100vh;
+   // height: 100vh;
    // background-color: red;
    display: flex;
    justify-content: center;
@@ -37,7 +48,7 @@ const Container = styled.div`
 
 const CategoriesList= styled.ul`
 width: 800px;
-height: 500px;
+//height: 500px;
 border: 1px solid red;
 display: flex;
 justify-content: space-around;
