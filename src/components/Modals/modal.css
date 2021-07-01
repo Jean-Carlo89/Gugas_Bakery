@@ -1,0 +1,73 @@
+.dialog-box {
+    position: absolute;
+    top: calc(50% - 225px);
+    left: calc(50% - 395px);
+    height: 450px;
+    width: 790px;
+    border-radius: 20px;
+    background: #e8e2c8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    border: none;
+    outline: none;
+  }
+  
+  .dialog-box span {
+    font-family: "Oswald";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 56px;
+    color: #111111;
+  }
+  
+  .dialog-box button {
+    height: 37px;
+    width: 134px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    color: #ffffff;
+    background: green;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.5s 0s ease;
+  }
+  
+  .dialog-box .cancel-button {
+    background: red;
+  }
+  
+  .dialog-box .container {
+    width: 700px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  
+  .dialog-box .btn-container {
+    display: flex;
+    justify-content: space-between;
+    width: 88%;
+  }
+  
+  .dialog-box .products-container {
+    width: 88%;
+    height: 250px;
+    background: #e8e2c8;
+  }
+  
+  .dialog-box button:hover {
+    background: #4b7daf;
+    color: #ffffff;
+    transition: all 0.5s 0s ease;
+  }
+  
