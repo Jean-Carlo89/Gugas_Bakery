@@ -20,7 +20,7 @@ export default function FoodOption({cartItems,setCartItems}){
             
         })
 
-    },[])
+    })
 
     function addToCart(e,image,name,price){
         

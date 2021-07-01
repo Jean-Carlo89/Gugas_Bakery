@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const ConfirmationItem = (props) => {
-  const { name, price, qtd } = props;
+  const { name, price} = props;
 
   let priceToDisplay = price/100;
   priceToDisplay = priceToDisplay.toFixed(2).toString().replace(".", ",");

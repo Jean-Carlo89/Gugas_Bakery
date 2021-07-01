@@ -1,9 +1,8 @@
 import { useEffect ,useState} from 'react'
-import styled, { ServerStyleSheet } from 'styled-components'
+import styled from 'styled-components'
 import axios from 'axios'
-import {useHistory,link} from 'react-router-dom'
-import CartItem from './CartItem'
-import Header from './Header.js'
+import {useHistory} from 'react-router-dom'
+
 
 export default function Home(){
     const history = useHistory()
