@@ -1,4 +1,7 @@
 
+//import dotenv from 'dotenv'
+//
+
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import GlobalStyle from '../GlobalStyles.js'
 import Header from "./Header";
@@ -9,7 +12,7 @@ import Home from './Home.js'
 import FoodOption from './foodOptions.js'
 
 export default function App(){
-
+    //dotenv.config();
     return(
         <Router>
             <GlobalStyle/>

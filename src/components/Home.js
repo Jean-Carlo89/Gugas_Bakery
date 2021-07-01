@@ -13,6 +13,7 @@ export default function Home(){
         .then((response)=>{
             console.log(response.data)
             setCategories(response.data)
+           
         })
         .catch((err)=>{
             console.log(err)
@@ -90,6 +91,10 @@ position: relative;
         color: White;
         font-size: 25px;
         margin-top: 125px;
-        z-index:10
+        z-index:10;
+
+        &:hover{
+            cursor:pointer;
+        }
     }
 `

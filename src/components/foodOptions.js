@@ -13,6 +13,7 @@ export default function FoodOption(){
         axios.get(`http://localhost:4000/food/${idCategory}`)
         .then((response)=>{
             setCategoryItens(response.data)
+            
         })
         .catch((err)=>{
             console.log(err)
