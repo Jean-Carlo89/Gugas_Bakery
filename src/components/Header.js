@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FaShoppingCart } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import Cart from "./Cart";
+import {useHistory} from 'react-router-dom'
 
 const Header = () => {
   const [cartItems, setCartItems] = useState([
@@ -44,14 +45,14 @@ const Header = () => {
   ]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   console.log(isCartOpen);
-
+  const history=useHistory()
   function toggleCart() {
     setIsCartOpen(!isCartOpen);
   }
 
   return (
     <Body>
-      <h4>Guga's Bakery</h4>
+      <h4 onClick={()=>history.push("/home")}>Guga's Bakery</h4>
       <div className="icon-container">
         <IconContext.Provider value={{ size: "30px" }}>
           <FaShoppingCart style={{ cursor: "pointer" }} onClick={toggleCart} />

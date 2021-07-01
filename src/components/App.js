@@ -6,6 +6,8 @@ import Header from "./Header";
 import SignUp from './SignUp.js'
 import SignIn from './SignIn.js'
 import Home from './Home.js'
+import FoodOption from './foodOptions.js'
+
 export default function App(){
 
     return(
@@ -19,6 +21,12 @@ export default function App(){
                         <Header />
                         <Home/>
                     </Route>
+
+                    <Route path="/categoryItens/:idCategory" exact >
+                        <Header />
+                        <FoodOption/>
+                    </Route>
+                
                 </Switch>
         </Router>
     )
