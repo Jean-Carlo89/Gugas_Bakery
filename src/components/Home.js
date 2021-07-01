@@ -3,7 +3,7 @@ import styled, { ServerStyleSheet } from 'styled-components'
 import axios from 'axios'
 import {useHistory,link} from 'react-router-dom'
 import CartItem from './CartItem'
-
+import Header from './Header.js'
 
 export default function Home(){
     const history = useHistory()
@@ -19,8 +19,13 @@ export default function Home(){
             console.log(err)
         })
     },[])
+
+    //const [cartItems, setCartItems] = useState([])
     
     return(
+
+        <>
+         
         <Container>
             <CategoriesList>
                {
@@ -38,6 +43,7 @@ export default function Home(){
             </CategoriesList>
             
         </Container>
+        </>
     )
 }
 
