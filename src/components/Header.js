@@ -11,12 +11,12 @@ const Header = (props) => {
    const {addToCart,cartItems,setCartItems} = props
   
   const [isCartOpen, setIsCartOpen] = useState(false);
-  console.log(isCartOpen);
+  
   const history=useHistory()
   function toggleCart() {
     setIsCartOpen(!isCartOpen);
   }
-console.log(cartItems)
+
   return (
     <Body>
       <h4 onClick={()=>history.push("/home")}>Guga's Bakery</h4>

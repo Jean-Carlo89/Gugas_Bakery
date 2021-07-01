@@ -5,29 +5,17 @@ import {Container,DataInfo,Logo,
 import{useHistory} from 'react-router-dom'
 import {useContext, useEffect, useState} from 'react'
 import axios from 'axios'
-//import Usercontext from './UserContext.js'
 import Loader from "react-loader-spinner";
 
 export default function SignIn(){
     const history = useHistory()
     const [loginData,setLoginData] = useState({})
-   // const {user,setUser} = useContext(Usercontext)
     const [loading,setLoading] = useState(false)
     function SaveInfo(e,key){
         loginData[key]=e.target.value
         setLoginData({...loginData})
     }
 
-    // useEffect(()=>{
-    //    if(localStorage.length!==0){
-    //         const userDataString = localStorage.getItem("info")
-    //         const userData= JSON.parse(userDataString)
-    //         setUser(userData)
-    //         history.push("/home")
-    //     }
-    // },[])
-
-    
     return(
     
         <Container>
@@ -82,23 +70,18 @@ export default function SignIn(){
             return
         }
 
-        //setLoading(true)
+        setLoading(true)
         
         
         axios.post(`${process.env.REACT_APP_API_BASE_URL}/sign-in`,body)
         .then((response)=>{
             
-            //setUser(response.data)
-            // const userData =response.data
-            // const userDataString = JSON.stringify(userData)
-            // localStorage.setItem('info',userDataString)
-            console.log(response.data)
         
          history.push("/home")
-         //setLoading(false)
+         setLoading(false)
         })
         .catch((e)=>{
-            //setLoading(false)
+            
             alert('Email ou senha incorretos')
         })
     }

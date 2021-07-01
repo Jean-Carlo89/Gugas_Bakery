@@ -79,8 +79,6 @@ export default function SignUp(){
     
         delete body["passwordConfirmation"]
 
-        console.log(process.env.REACT_APP_API_BASE_URL)
-        
        axios.post(`${process.env.REACT_APP_API_BASE_URL}/sign-up`,body)
        .then(()=>{
             history.push("/")

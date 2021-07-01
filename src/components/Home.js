@@ -11,16 +11,16 @@ export default function Home(){
     useEffect(()=>{
         axios.get(`${process.env.REACT_APP_API_BASE_URL}/categories`)
         .then((response)=>{
-            console.log(response.data)
+            
             setCategories(response.data)
            
         })
         .catch((err)=>{
-            console.log(err)
+            
         })
     },[])
 
-    //const [cartItems, setCartItems] = useState([])
+    
     
     return(
 
@@ -52,16 +52,12 @@ const Container = styled.div`
     height: 100vh;
     background-image: url('https://www.padariarequinte.com.br/wp-content/uploads/Bolo-Sonho-de-Valsa.jpg');
 background-size: cover;
-   // height: 100vh;
-   // background-color: red;
    display: flex;
    justify-content: center;
 `
 
 const CategoriesList= styled.ul`
 width: 800px;
-//height: 500px;
-border: 1px solid red;
 display: flex;
 justify-content: space-around;
 flex-wrap: wrap;
@@ -70,14 +66,10 @@ flex-wrap: wrap;
 const CategoryType = styled.li`
 width: 200px;
 height: 200px;
-border: 1px solid blue;
 border-radius:50%;
 display: flex;
 justify-content: center;
 align-items: center;
-
-/* background:  url('https://docesonhosconfeitaria160534608.files.wordpress.com/2018/01/bolo-floresta-negra.jpg') ; */
-
 background: url(${props=>(props.background)});
 background-size:cover;
 position: relative;

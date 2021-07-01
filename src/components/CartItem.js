@@ -10,10 +10,12 @@ const CartItem = (props) => {
 
   function excludeItem(clickedItem) {
     
-   
+    const itemIndex = cartItems.findIndex((i)=>i.name===clickedItem)
+    const newArray = cartItems.filter((i, index) => index !== itemIndex);
+    setCartItems(newArray);
     
-     const newArray = cartItems.filter((i) => i.name !== clickedItem);
-     setCartItems(newArray);
+    //  const newArray = cartItems.filter((i) => i.name !== clickedItem);
+    //  setCartItems(newArray);
   }
 
   return (

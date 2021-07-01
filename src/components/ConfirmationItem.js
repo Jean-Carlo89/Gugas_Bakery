@@ -11,7 +11,7 @@ const ConfirmationItem = (props) => {
     <Body>
       <div>
         <span className="name">{name}</span>
-        {/* <span>{`x${qtd}`}</span> */}
+       
       </div>
       <span>{`R$ ${priceToDisplay}`}</span>
     </Body>

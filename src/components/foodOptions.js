@@ -6,29 +6,24 @@ import Header from './Header.js'
 
 export default function FoodOption({cartItems,setCartItems}){
     
-    //const [cartItems, setCartItems] = useState([])
-    console.log(cartItems)
-   
     const {idCategory} = useParams()
-    console.log(idCategory)
+  
     const [categoryItens,setCategoryItens] = useState([])
-    //console.log(categoryId)
+    
     useEffect(()=>{
 
         axios.get(`${process.env.REACT_APP_API_BASE_URL}/food/${idCategory}`)
         .then((response)=>{
             setCategoryItens(response.data)
-            console.log(response.data)
-            
         })
         .catch((err)=>{
-            console.log(err)
+            
         })
 
     },[])
 
     function addToCart(e,image,name,price){
-        console.log(e)
+        
         const newItem={
             image,
             name,
@@ -72,15 +67,13 @@ width: 100%;
  height: 100vh;
  background-image: url('https://bombocadosbs.com.br/wp-content/uploads/2020/02/morango.jpg');
 background-size: cover;
-//background-color: red;
+
 display: flex;
 justify-content: center;
 `
 
 const CategoriesList= styled.ul`
 width: 800px;
-//height: 500px;
-border: 1px solid red;
 display: flex;
 justify-content: space-around;
 flex-wrap: wrap;
@@ -89,15 +82,11 @@ flex-wrap: wrap;
 const CategoryType = styled.li`
 width: 300px;
 height: 300px;
-border: 1px solid blue;
 border-radius:50%;
 display: flex;
 justify-content: center;
 flex-direction: column;
 align-items: center;
-
-/* background:  url('https://docesonhosconfeitaria160534608.files.wordpress.com/2018/01/bolo-floresta-negra.jpg') ; */
-
 background: url(${props=>(props.background)});
 background-size:cover;
 position: relative;
