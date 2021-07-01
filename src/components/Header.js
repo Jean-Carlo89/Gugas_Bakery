@@ -33,6 +33,7 @@ console.log(cartItems)
         isCartOpen={isCartOpen}
         setIsCartOpen={setIsCartOpen}
         toggleCart={toggleCart}
+        
       />
     </Body>
   );

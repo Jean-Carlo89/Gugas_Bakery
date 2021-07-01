@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 const Container = styled.div`
-    background-color: #8C11BE;
+    //background-color: #E8E2C8;
+    background-image: url('https://www.bakemeawish.com/images/products/merch/640/23_640.jpg');
+    background-size: cover;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -20,12 +22,15 @@ const DataInfo = styled.div`
 const Logo = styled.h1`
     font-family: 'Saira Stencil One', cursive!important;
     color: white;
+    //color: black;
+    
     font-size: 32px;
     margin-bottom: 24px;
 `
 
 const Input = styled.input`
-    width: 95%;
+   // width: 95%;
+   width: 600px;
     height: 50px;
     background-color: white;
     border-radius: 5px;
@@ -37,10 +42,15 @@ const Input = styled.input`
             color:black;
             font-size: 20px;
         }
+
+
+
+        
 `
 
 const ConfirmButton = styled.button`
-    width: 95%;
+    //width: 95%;
+    width: 600px;
     height: 46px;
     background-color: #A328D6;
     border-radius: 5px;
@@ -53,8 +63,9 @@ const ConfirmButton = styled.button`
 `
 
 const MessageH3 = styled.h3`
-    font-size:14px;
-    color: white;
+    font-size:19px;
+   color: white;
+   //color: black;
 `
 
 const ActionsHeader = styled.h1`

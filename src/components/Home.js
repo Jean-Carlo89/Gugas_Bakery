@@ -49,6 +49,9 @@ export default function Home(){
 
 const Container = styled.div`
     width: 100%;
+    height: 100vh;
+    background-image: url('https://www.padariarequinte.com.br/wp-content/uploads/Bolo-Sonho-de-Valsa.jpg');
+background-size: cover;
    // height: 100vh;
    // background-color: red;
    display: flex;

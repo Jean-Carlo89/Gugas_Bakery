@@ -5,12 +5,15 @@ import { IconContext } from "react-icons";
 
 const CartItem = (props) => {
   const { image, name, price, qtd, cartItems, setCartItems } = props;
-  let priceToDisplay = qtd * price;
+  let priceToDisplay = price/100;
   priceToDisplay = priceToDisplay.toFixed(2).toString().replace(".", ",");
 
   function excludeItem(clickedItem) {
-    const newArray = cartItems.filter((i) => i.name !== clickedItem);
-    setCartItems(newArray);
+    
+   
+    
+     const newArray = cartItems.filter((i) => i.name !== clickedItem);
+     setCartItems(newArray);
   }
 
   return (
@@ -22,7 +25,7 @@ const CartItem = (props) => {
           <span>{`R$ ${priceToDisplay}`}</span>
         </div>
         <div className="container-excluir">
-          <span>{`qtd: ${qtd}`}</span>
+          {/* <span>{`qtd: ${qtd}`}</span> */}
           <span>
             <IconContext.Provider value={{ size: "24px" }}>
               <AiFillMinusCircle

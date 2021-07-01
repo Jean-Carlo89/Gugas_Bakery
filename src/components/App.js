@@ -14,7 +14,7 @@ import FoodOption from './foodOptions.js'
 export default function App(){
 
     const [cartItems, setCartItems] = useState([])
-    //dotenv.config();
+    
     return(
         <Router>
             <GlobalStyle/>

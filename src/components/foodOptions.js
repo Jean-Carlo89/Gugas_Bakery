@@ -18,6 +18,7 @@ export default function FoodOption({cartItems,setCartItems}){
         axios.get(`${process.env.REACT_APP_API_BASE_URL}/food/${idCategory}`)
         .then((response)=>{
             setCategoryItens(response.data)
+            console.log(response.data)
             
         })
         .catch((err)=>{
@@ -26,7 +27,8 @@ export default function FoodOption({cartItems,setCartItems}){
 
     },[])
 
-    function addToCart(image,name,price){
+    function addToCart(e,image,name,price){
+        console.log(e)
         const newItem={
             image,
             name,
@@ -46,7 +48,7 @@ export default function FoodOption({cartItems,setCartItems}){
                     categoryItens.map((item)=>{
                         return(
                             <>
-                                <CategoryType key={item.id} background={item.image} onClick={()=>addToCart(item.image,item.name,item.price)} >
+                                <CategoryType key={item.id} background={item.image} onClick={(e)=>addToCart(e,item.image,item.name,item.price)} >
                                     <h2>{item.name}</h2>
                                     <Price> R$ {((item.price)/100).toFixed(2)}</Price>
                                 </CategoryType>
@@ -68,6 +70,8 @@ export default function FoodOption({cartItems,setCartItems}){
 const Container = styled.div`
 width: 100%;
  height: 100vh;
+ background-image: url('https://bombocadosbs.com.br/wp-content/uploads/2020/02/morango.jpg');
+background-size: cover;
 //background-color: red;
 display: flex;
 justify-content: center;

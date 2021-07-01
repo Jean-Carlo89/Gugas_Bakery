@@ -59,7 +59,7 @@ const ConfirmationDialog = (props) => {
             {cartItems
               .map((i) => {
                 return (
-                  <ConfirmationItem name={i.name} price={i.price} qtd={i.qtd} />
+                  <ConfirmationItem name={i.name} price={i.price} />
                 );
               })
               .reverse()}

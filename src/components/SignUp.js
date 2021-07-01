@@ -18,7 +18,7 @@ export default function SignUp(){
     return(
         <Container>
             <DataInfo>
-                    <Logo>Guga's Bakery (layout de teste)</Logo>
+                    <Logo>Guga's Bakery</Logo>
                     <Input placeholder="Nome" type='text' 
                             onChange={(e)=>SaveInfo(e,'name')}
                             

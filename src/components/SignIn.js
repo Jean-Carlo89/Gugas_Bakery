@@ -32,7 +32,7 @@ export default function SignIn(){
     
         <Container>
             <DataInfo>
-                    <Logo>Guga's Bakery (layout de test)</Logo>
+                    <Logo>Guga's Bakery</Logo>
                     <Input placeholder="E-mail" type='text'
                             onChange={(e)=>SaveInfo(e,'email')}
                             disabled={loading}
@@ -62,7 +62,7 @@ export default function SignIn(){
                     <MessageH3 onClick={()=>history.push("/sign-up")}>Primeira vez? Cadastre-se</MessageH3>
             </DataInfo> 
            
-          <button onClick={()=>console.log(loginData)}>aaaaaaa</button>
+         
         </Container>
 
         
