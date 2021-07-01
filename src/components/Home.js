@@ -9,7 +9,7 @@ export default function Home(){
     const history = useHistory()
     const [categories,setCategories] = useState([])
     useEffect(()=>{
-        axios.get('http://localhost:4000/categories')
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/categories`)
         .then((response)=>{
             console.log(response.data)
             setCategories(response.data)

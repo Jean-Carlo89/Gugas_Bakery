@@ -92,12 +92,13 @@ export default function SignIn(){
             // const userData =response.data
             // const userDataString = JSON.stringify(userData)
             // localStorage.setItem('info',userDataString)
+            console.log(response.data)
         
-          history.push("/home")
-         // setLoading(false)
+         history.push("/home")
+         //setLoading(false)
         })
         .catch((e)=>{
-            setLoading(false)
+            //setLoading(false)
             alert('Email ou senha incorretos')
         })
     }

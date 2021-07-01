@@ -15,7 +15,7 @@ export default function FoodOption({cartItems,setCartItems}){
     //console.log(categoryId)
     useEffect(()=>{
 
-        axios.get(`http://localhost:4000/food/${idCategory}`)
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/food/${idCategory}`)
         .then((response)=>{
             setCategoryItens(response.data)
             
