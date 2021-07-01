@@ -4,7 +4,7 @@ import { AiFillMinusCircle } from "react-icons/ai";
 import { IconContext } from "react-icons";
 
 const CartItem = (props) => {
-  const { image, name, price, qtd, cartItems, setCartItems } = props;
+  const { image, name, price,cartItems, setCartItems } = props;
   let priceToDisplay = price/100;
   priceToDisplay = priceToDisplay.toFixed(2).toString().replace(".", ",");
 

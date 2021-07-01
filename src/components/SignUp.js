@@ -1,7 +1,7 @@
 
 import {Container,DataInfo,Logo,
     Input,ConfirmButton,MessageH3} from './StyledComponents.js'
-    import{Link,useHistory} from 'react-router-dom'
+    import{useHistory} from 'react-router-dom'
 
     import {useState} from 'react'
 import axios from 'axios'

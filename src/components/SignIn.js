@@ -3,7 +3,7 @@ import {Container,DataInfo,Logo,
     Input,ConfirmButton,MessageH3} from './StyledComponents.js'
 
 import{useHistory} from 'react-router-dom'
-import {useContext, useEffect, useState} from 'react'
+import { useState} from 'react'
 import axios from 'axios'
 import Loader from "react-loader-spinner";
 

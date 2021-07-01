@@ -8,7 +8,7 @@ import {useHistory} from 'react-router-dom'
 const Header = (props) => {
   
 
-   const {addToCart,cartItems,setCartItems} = props
+   const {cartItems,setCartItems} = props
   
   const [isCartOpen, setIsCartOpen] = useState(false);
   
