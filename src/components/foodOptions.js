@@ -2,8 +2,13 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
 import styled from 'styled-components'
+import Header from './Header.js'
 
-export default function FoodOption(){
+export default function FoodOption({cartItems,setCartItems}){
+    
+    //const [cartItems, setCartItems] = useState([])
+    console.log(cartItems)
+   
     const {idCategory} = useParams()
     console.log(idCategory)
     const [categoryItens,setCategoryItens] = useState([])
@@ -13,14 +18,27 @@ export default function FoodOption(){
         axios.get(`http://localhost:4000/food/${idCategory}`)
         .then((response)=>{
             setCategoryItens(response.data)
+            
         })
         .catch((err)=>{
             console.log(err)
         })
 
     },[])
+
+    function addToCart(image,name,price){
+        const newItem={
+            image,
+            name,
+            price
+        }
+
+        setCartItems([...cartItems,newItem])
+    }
     
     return(
+        <>
+        <Header addToCart={addToCart} cartItems={cartItems} setCartItems={setCartItems} />
         <Container>
 
              <CategoriesList>
@@ -28,7 +46,7 @@ export default function FoodOption(){
                     categoryItens.map((item)=>{
                         return(
                             <>
-                                <CategoryType key={item.id} background={item.image} >
+                                <CategoryType key={item.id} background={item.image} onClick={()=>addToCart(item.image,item.name,item.price)} >
                                     <h2>{item.name}</h2>
                                     <Price> R$ {((item.price)/100).toFixed(2)}</Price>
                                 </CategoryType>
@@ -43,6 +61,7 @@ export default function FoodOption(){
                 
 
         </Container>
+        </>
     )
 }
 
