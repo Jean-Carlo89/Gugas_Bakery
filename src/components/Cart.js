@@ -28,7 +28,7 @@ const Cart = (props) => {
   function calculateTotal() {
     let totalPrice = 0;
 
-    cartItems.forEach((i) => (totalPrice = totalPrice + i.price * i.qtd));
+    cartItems.forEach((i) => (totalPrice = totalPrice + i.price));
 
     return totalPrice;
   }

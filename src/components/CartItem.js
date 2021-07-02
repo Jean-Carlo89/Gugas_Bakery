@@ -9,7 +9,8 @@ const CartItem = (props) => {
   priceToDisplay = priceToDisplay.toFixed(2).toString().replace(".", ",");
 
   function excludeItem(clickedItem) {
-    const newArray = cartItems.filter((i) => i.name !== clickedItem);
+    const itemIndex = cartItems.findIndex((i)=>i.name===clickedItem)
+    const newArray = cartItems.filter((i, index) => index !== itemIndex);
     setCartItems(newArray);
   }
 
