@@ -26,7 +26,7 @@ export default function SignIn(){
         if(user){
             history.push('/home');
         }
-      },[user])
+      },[user,history])
 
     
 
