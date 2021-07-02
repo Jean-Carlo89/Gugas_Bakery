@@ -116,7 +116,7 @@ position: relative;
 
 const Price = styled.div`
     color: white;
-    z-index:10;
+    z-index:8;
     margin-top: 15px;
     font-size: 20px;
 `
