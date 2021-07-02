@@ -27,7 +27,7 @@ const CustomScrollbars = (props) => (
 /////////////////////////////////////////////////////////////////
 
 const ConfirmationDialog = (props) => {
-  const { isModalOpen, setIsModalOpen, cartItems, calculateTotal } = props;
+  const { isModalOpen, setIsModalOpen, cartItems, calculateTotal,setCartItems } = props;
 
   const { user, setUser } = useContext(UserContext);
 
@@ -42,12 +42,15 @@ const ConfirmationDialog = (props) => {
       headers: { Authorization: `Bearer ${user.token}` },
     };
     const promise = axios.post(
-      "http://localhost:4000/sendmail",
+      `${process.env.REACT_APP_API_BASE_URL}/sendmail`,
       { price: calculateTotal() },
       config
     );
     promise.then(() => {
       alert("compra realizada com sucesso!");
+      closeModal()
+      setCartItems([])
+      
     });
     promise.catch(() => {
       alert("Algo deu errado. Tente novamente.");
@@ -60,7 +63,7 @@ const ConfirmationDialog = (props) => {
       headers: { Authorization: `Bearer ${user.token}` },
     };
     const promise = axios.post(
-      "http://localhost:4000/purchases",
+      `${process.env.REACT_APP_API_BASE_URL}/purchases`,
       { price: calculateTotal() },
       config
     );
