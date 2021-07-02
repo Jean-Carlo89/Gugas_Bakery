@@ -59,6 +59,7 @@ const ConfirmationDialog = (props) => {
 
   function makePurchase() {
 
+    
     const config = {
       headers: { Authorization: `Bearer ${user.token}` },
     };
