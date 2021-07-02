@@ -34,6 +34,10 @@ const Cart = (props) => {
   }
 
   function confirmOrder() {
+    if(cartItems.length===0){
+      alert("Seu carrinho está vazio");
+      return
+    }
     setIsModalOpen(true);
   }
 

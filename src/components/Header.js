@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState ,useContext} from "react";
 import styled from "styled-components";
 import { FaShoppingCart } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import Cart from "./Cart";
 import {useHistory} from 'react-router-dom'
+import UserContext from "../contexts/UserContext";
 
 const Header = (props) => {
   
-
+  const {setUser} = useContext(UserContext)
    const {cartItems,setCartItems} = props
   
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -19,6 +20,10 @@ const Header = (props) => {
 
   return (
     <Body >
+      <button onClick={() => {localStorage.clear();setUser(null);history.push("/");}}className="logout">
+        Logout
+      </button>
+     
       <h4 onClick={()=>history.push("/home")}>Guga's Bakery</h4>
       <div className="icon-container">
         <IconContext.Provider value={{ size: "30px" }}>
@@ -72,5 +77,25 @@ const Body = styled.div`
       align-items: center;
       justify-content: center;
     }
+  }
+
+  .logout {
+    color: #855f13;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background: #ff9901;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    height: 32px;
+    width: 140px;
+    transition: all 0.5s 0s ease;
+    cursor: pointer;
+  }
+
+  .logout:hover {
+    background: #4b7daf;
+    color: #ffffff;
+    transition: all 0.5s 0s ease;
   }
 `;
