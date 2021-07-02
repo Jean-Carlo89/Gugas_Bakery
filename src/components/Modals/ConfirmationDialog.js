@@ -55,10 +55,6 @@ const ConfirmationDialog = (props) => {
   }
 
   function makePurchase() {
-    if (cartItems.length === 0) {
-      alert("seu carrinho está vazio");
-      return;
-    }
 
     const config = {
       headers: { Authorization: `Bearer ${user.token}` },
