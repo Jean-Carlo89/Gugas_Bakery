@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Modal from "react-modal";
 import ConfirmationItem from "../ConfirmationItem";
 import "./modal.css";
@@ -29,7 +29,7 @@ const CustomScrollbars = (props) => (
 const ConfirmationDialog = (props) => {
   const { isModalOpen, setIsModalOpen, cartItems, calculateTotal,setCartItems } = props;
 
-  const { user, setUser } = useContext(UserContext);
+  const { user} = useContext(UserContext);
 
   Modal.setAppElement(".root");
 
