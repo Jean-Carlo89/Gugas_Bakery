@@ -3,18 +3,34 @@ import {Container,DataInfo,Logo,
     Input,ConfirmButton,MessageH3} from './StyledComponents.js'
 
 import{useHistory} from 'react-router-dom'
-import { useState} from 'react'
+import { useState,useEffect,useContext} from 'react'
 import axios from 'axios'
 import Loader from "react-loader-spinner";
+import UserContext from "../contexts/UserContext";
 
 export default function SignIn(){
     const history = useHistory()
     const [loginData,setLoginData] = useState({})
+
+    const {user,setUser} = useContext(UserContext)
+
     const [loading,setLoading] = useState(false)
     function SaveInfo(e,key){
         loginData[key]=e.target.value
         setLoginData({...loginData})
     }
+
+
+
+    useEffect(()=>{
+        if(user){
+            history.push('/home');
+        }
+      },[user])
+
+    
+
+    
 
     return(
     
@@ -76,6 +92,11 @@ export default function SignIn(){
         axios.post(`${process.env.REACT_APP_API_BASE_URL}/sign-in`,body)
         .then((response)=>{
             
+
+
+            setUser(response.data);
+      localStorage.setItem("user", JSON.stringify(response.data));
+          
         
          history.push("/home")
          setLoading(false)

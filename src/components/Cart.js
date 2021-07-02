@@ -45,6 +45,7 @@ const Cart = (props) => {
           setIsModalOpen={setIsModalOpen}
           isModalOpen={isModalOpen}
           calculateTotal={calculateTotal}
+          setCartItems={setCartItems}
         />
       ) : (
         ""

@@ -25,7 +25,7 @@ export default function Home(){
 
         <>
          
-        <Container>
+        <Container >
             <CategoriesList>
                {
                    categories.map((item)=>{

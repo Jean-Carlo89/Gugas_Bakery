@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Modal from "react-modal";
 import ConfirmationItem from "../ConfirmationItem";
 import "./modal.css";
 import { Scrollbars } from "react-custom-scrollbars-2";
+import UserContext from "../../contexts/UserContext";
+import axios from "axios";
 
 ///////////// COMPONENTES BIBLIOTECA DO SCROLL////////////////////
 
@@ -25,7 +27,9 @@ const CustomScrollbars = (props) => (
 /////////////////////////////////////////////////////////////////
 
 const ConfirmationDialog = (props) => {
-  const { isModalOpen, setIsModalOpen, cartItems, calculateTotal } = props;
+  const { isModalOpen, setIsModalOpen, cartItems, calculateTotal,setCartItems } = props;
+
+  const { user, setUser } = useContext(UserContext);
 
   Modal.setAppElement(".root");
 
@@ -33,9 +37,42 @@ const ConfirmationDialog = (props) => {
     setIsModalOpen(false);
   }
 
-  function sendOrder() {
-    alert("PEDIDO ENVIADO");
-    setIsModalOpen(false);
+  function triggerEmail() {
+    const config = {
+      headers: { Authorization: `Bearer ${user.token}` },
+    };
+    const promise = axios.post(
+      `${process.env.REACT_APP_API_BASE_URL}/sendmail`,
+      { price: calculateTotal() },
+      config
+    );
+    promise.then(() => {
+      alert("compra realizada com sucesso!");
+      closeModal()
+      setCartItems([])
+      
+    });
+    promise.catch(() => {
+      alert("Algo deu errado. Tente novamente.");
+    });
+  }
+
+  function makePurchase() {
+
+    const config = {
+      headers: { Authorization: `Bearer ${user.token}` },
+    };
+    const promise = axios.post(
+      `${process.env.REACT_APP_API_BASE_URL}/purchases`,
+      { price: calculateTotal() },
+      config
+    );
+    promise.then(() => {
+      triggerEmail();
+    });
+    promise.catch(() => {
+      alert("Algo deu errado. Tente novamente.");
+    });
   }
 
   return (
@@ -65,7 +102,9 @@ const ConfirmationDialog = (props) => {
               .reverse()}
           </CustomScrollbars>
         </ul>
-        <span>{`Preço total: R$ ${calculateTotal()
+        <span
+          onClick={() => console.log(user)}
+        >{`Preço total: R$ ${calculateTotal()
           .toFixed(2)
           .toString()
           .replace(".", ",")}`}</span>
@@ -73,7 +112,7 @@ const ConfirmationDialog = (props) => {
           <button className="cancel-button" onClick={closeModal}>
             Não, voltar
           </button>
-          <button onClick={sendOrder}>Confirmar</button>
+          <button onClick={makePurchase}>Confirmar</button>
         </div>
       </div>
     </Modal>
