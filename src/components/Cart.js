@@ -118,6 +118,7 @@ const Body = styled.div`
   align-items: center;
   font-family: "Lato", sans-serif;
   box-shadow: 0px 2px 10px 0px #000000;
+  z-index:10;
 
   .itens-container {
     display: flex;
