@@ -91,7 +91,7 @@ position: relative;
         color: White;
         font-size: 25px;
         margin-top: 125px;
-        z-index:10;
+        z-index:8;
 
         &:hover{
             cursor:pointer;
