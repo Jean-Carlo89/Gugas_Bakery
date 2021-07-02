@@ -104,6 +104,7 @@ export default function SignIn(){
         .catch((e)=>{
             
             alert('Email ou senha incorretos')
+            setLoading(false)
         })
     }
 
