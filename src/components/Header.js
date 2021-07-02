@@ -11,14 +11,14 @@ const Header = (props) => {
    const {cartItems,setCartItems} = props
   
   const [isCartOpen, setIsCartOpen] = useState(false);
-  
+
   const history=useHistory()
   function toggleCart() {
     setIsCartOpen(!isCartOpen);
   }
 
   return (
-    <Body>
+    <Body >
       <h4 onClick={()=>history.push("/home")}>Guga's Bakery</h4>
       <div className="icon-container">
         <IconContext.Provider value={{ size: "30px" }}>
