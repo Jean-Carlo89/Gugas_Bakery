@@ -14,8 +14,7 @@ const CartItem = (props) => {
     const newArray = cartItems.filter((i, index) => index !== itemIndex);
     setCartItems(newArray);
     
-    //  const newArray = cartItems.filter((i) => i.name !== clickedItem);
-    //  setCartItems(newArray);
+   
   }
 
   return (
